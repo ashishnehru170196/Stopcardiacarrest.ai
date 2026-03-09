@@ -1,0 +1,187 @@
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { ArrowRight, Shield, Dna, Activity } from "lucide-react";
+import { motion } from "framer-motion";
+
+const Index = () => {
+  return (
+    <>
+      {/* Hero */}
+      <section className="py-24 lg:py-32">
+        <div className="container">
+          <div className="max-w-4xl">
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <span className="inline-block rounded-full border px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-8">
+                Now available in India
+              </span>
+            </motion.div>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="font-display text-6xl font-extrabold tracking-tight leading-[1.05] sm:text-7xl lg:text-8xl"
+            >
+              A hidden
+              <br />
+              gene.
+              <br />
+              <span className="text-primary">Zero warning.</span>
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="mt-8 max-w-xl text-lg text-muted-foreground leading-relaxed sm:text-xl"
+            >
+              1 in 25 Indians carry the MYBPC3 mutation. It's the silent cause of sudden heart failure in healthy young people.{" "}
+              <strong className="text-foreground">Protect your family with one simple test.</strong>
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="mt-10 flex flex-wrap gap-4"
+            >
+              <Link to="/order">
+                <Button size="lg" className="h-12 px-8 text-base gap-2 rounded-full">
+                  Order Test Kit <ArrowRight className="h-4 w-4" />
+                </Button>
+              </Link>
+              <Link to="/how-it-works">
+                <Button variant="outline" size="lg" className="h-12 px-8 text-base rounded-full">
+                  How It Works
+                </Button>
+              </Link>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats strip */}
+      <section className="border-y py-10">
+        <div className="container">
+          <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
+            {[
+              { value: "1 in 25", label: "Indians carry the MYBPC3 mutation" },
+              { value: "99.9%", label: "Sequencing accuracy" },
+              { value: "4 genes", label: "Critical cardiac panel" },
+              { value: "7–10 days", label: "Report turnaround" },
+            ].map((stat) => (
+              <div key={stat.label}>
+                <div className="text-2xl font-extrabold tracking-tight sm:text-3xl">{stat.value}</div>
+                <div className="mt-1 text-sm text-muted-foreground">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Why it matters */}
+      <section className="py-24">
+        <div className="container">
+          <h2 className="font-display text-3xl font-bold mb-4 sm:text-4xl">Why genetic screening?</h2>
+          <p className="max-w-2xl text-muted-foreground text-lg mb-12">Hypertrophic cardiomyopathy is the #1 genetic heart condition — often silent until it's too late.</p>
+
+          <div className="grid gap-px bg-border md:grid-cols-3 rounded-xl overflow-hidden border">
+            {[
+              { icon: Shield, title: "One test, lifetime insight", desc: "Your DNA doesn't change. One saliva test reveals your cardiac genetic profile forever." },
+              { icon: Dna, title: "Precision sequencing", desc: "NABL-certified lab with next-gen sequencing covering MYBPC3, MYH7, TNNT2, and TNNI3." },
+              { icon: Activity, title: "AI-powered interpretation", desc: "Our AI breaks down complex genetic data into actionable, plain-language health insights." },
+            ].map((item) => (
+              <div key={item.title} className="bg-background p-8 lg:p-10">
+                <item.icon className="h-6 w-6 text-foreground mb-5" strokeWidth={1.5} />
+                <h3 className="font-display text-lg font-semibold mb-2">{item.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* How it works */}
+      <section className="py-24 border-t">
+        <div className="container">
+          <h2 className="font-display text-3xl font-bold mb-12 sm:text-4xl">How it works</h2>
+          <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              { step: "01", title: "Order online", desc: "Choose MYB-CARDIOSCREEN and checkout securely." },
+              { step: "02", title: "Collect saliva", desc: "Simple at-home collection. No blood draw needed." },
+              { step: "03", title: "Lab analysis", desc: "Next-gen sequencing at our NABL-certified lab." },
+              { step: "04", title: "Get insights", desc: "AI-interpreted report on your dashboard in 7–10 days." },
+            ].map((s) => (
+              <div key={s.step}>
+                <div className="text-4xl font-extrabold text-muted-foreground/20 mb-3 font-display">{s.step}</div>
+                <h3 className="font-display text-lg font-semibold mb-2">{s.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Genes */}
+      <section className="py-24 border-t">
+        <div className="container">
+          <h2 className="font-display text-3xl font-bold mb-4 sm:text-4xl">Genes we screen</h2>
+          <p className="max-w-2xl text-muted-foreground mb-12">Comprehensive cardiac gene panel targeting key mutation hotspots.</p>
+
+          <div className="grid gap-px bg-border sm:grid-cols-2 rounded-xl overflow-hidden border">
+            {[
+              { gene: "MYBPC3", desc: "Myosin Binding Protein C — most common cause of HCM", primary: true },
+              { gene: "MYH7", desc: "Beta-myosin heavy chain — associated with cardiomyopathy" },
+              { gene: "TNNT2", desc: "Cardiac troponin T — linked to dilated cardiomyopathy" },
+              { gene: "TNNI3", desc: "Cardiac troponin I — associated with restrictive cardiomyopathy" },
+            ].map((g) => (
+              <div key={g.gene} className={`bg-background p-8 ${g.primary ? "sm:col-span-2" : ""}`}>
+                <div className="flex items-center gap-3 mb-2">
+                  <span className="font-display text-xl font-bold">{g.gene}</span>
+                  {g.primary && (
+                    <span className="rounded-full bg-primary/10 px-3 py-0.5 text-xs font-semibold text-primary">Primary Target</span>
+                  )}
+                </div>
+                <p className="text-sm text-muted-foreground">{g.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-24 border-t">
+        <div className="container">
+          <div className="max-w-3xl">
+            <h2 className="font-display text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl mb-6">
+              Know your risk.
+              <br />
+              <span className="text-primary">Protect your heart.</span>
+            </h2>
+            <p className="text-lg text-muted-foreground mb-8 max-w-xl">
+              Order MYB-CARDIOSCREEN today. One test. Lifetime peace of mind.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <Link to="/order">
+                <Button size="lg" className="h-12 px-8 text-base gap-2 rounded-full">
+                  Order Now — ₹4,999 <ArrowRight className="h-4 w-4" />
+                </Button>
+              </Link>
+              <Link to="/signup">
+                <Button variant="outline" size="lg" className="h-12 px-8 text-base rounded-full">
+                  Create Free Account
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+};
+
+export default Index;
